@@ -1,0 +1,2 @@
+[build]
+public_url = "/wasm_parser/"  # фикс путей для github-pages конкретно во всех dist файлах(т.к. в gh-pages мы начинаем не с "user.github.io/", а с "user.github.io/repository_name")

@@ -1,0 +1,36 @@
+name: All in One
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # чтобы action мог push делать
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal  # этот профиль включает как можно меньше компонентов для работы компилятора. Он устанавливает rustc (компилятор Rust), rust-std (стандартную библиотеку Rust) и cargo (систему сборки и менеджер пакетов Rust)
+        toolchain: nightly  # ночная версия rust, а не стабильная, т.к. некоторые фишки практичнее здесь
+        target: wasm32-unknown-unknown  # обозначает платформу, для которой вы компилируете ваш код. В данном случае, wasm32-unknown-unknown указывает на то, что мы компилируем код для WebAssembly (wasm32) без конкретной операционной системы или процессора (unknown-unknown).
+        override: true  # следует ли перезаписать существующую установку Rust на вашей машине. установит указанный вами toolchain и target, даже если на вашей машине уже установлен другой toolchain или target
+
+    - name: Install Trunk
+      run: cargo install --locked trunk  # установить trunk. --locked для гарантии, что Cargo будет использовать точные версии зависимостей, указанные в файле Cargo.lock.
+
+    - name: Build with Trunk
+      run: trunk build --release  # сборка в статические файлы(html, js, wasm, favicon...)
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4  # специально разработан для деплоя на GitHub Pages
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages  # в ветку gh-pages
+        FOLDER: dist  # из папки dist(формируется после сборки leptos)

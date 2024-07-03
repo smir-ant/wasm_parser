@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    button {
+        @apply p-3 rounded-lg text-black dark:text-white font-bold
+               bg-gradient-to-r from-teal-500 to-lime-500;
+    }
+
+    input {
+        @apply p-3 rounded-lg bg-white text-black dark:bg-black dark:text-white font-mono;
+    }
+}
+
+@layer components {
+    #images-container {
+        @apply grid p-3 gap-3;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-auto-rows: 150px;
+    }
+
+    #images-container img {
+        @apply block w-full h-full object-cover rounded-xl;
+    }
+
+    /* Стили для разных размеров изображений */
+    .size1 { grid-row: span 1; grid-column: span 1; }
+    .size2 { grid-row: span 2; grid-column: span 2; }
+    .size3 { grid-row: span 2; grid-column: span 1; }
+    .size4 { grid-row: span 1; grid-column: span 2; }
+
+}
