@@ -1,0 +1,8 @@
+.counter {
+	margin: 20px 0px;
+}
+
+.counter > * {
+	margin-right: 10px;
+}
+

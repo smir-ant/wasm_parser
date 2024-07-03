@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- +wasm: https://rustwasm.github.io/docs/wasm-bindgen/reference/weak-references.html -->
+    
+<script type="module" nonce="mBJb2IQOuSZWgQJmb5/yHQ==">
+import init, * as bindings from '/wasm_parser/wasm_parser-ea92cb237453f85c.js';
+const wasm = await init('/wasm_parser/wasm_parser-ea92cb237453f85c_bg.wasm');
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+
+    <!-- +tailwind: https://trunkrs.dev/assets/#tailwind -->
+    <link rel="stylesheet" href="/wasm_parser/tailwind-56e2d1da33c6d96a.css" integrity="sha384&#x2D;gETEqCa85hhmBcKlWFUC77Av9m2i3VLKO&#x2B;i&#x2F;9w&#x2B;&#x2B;ALpxnTw5X6h2M7XptrELLgyi"/>
+    
+    <!-- +css: https://trunkrs.dev/assets/#css -->
+    <link rel="stylesheet" href="/wasm_parser/styles-fee77a7688f3fa56.css" integrity="sha384&#x2D;8BxptkSrV2z0W1phF9xAy8oXGP2VStlITUFq3QlXwqzzA9dN9X&#x2B;ZMbolO1HKasuj"/>
+
+    <!-- +favicon: https://trunkrs.dev/assets/#icon -->
+    <link rel="icon" href="/wasm_parser/favicon-d43205a3c4214386.ico" integrity="sha384&#x2D;YJrVhyaL0z4xQDIu271WLLhAOYrtzXcbhuGPEWLdLualQQ06FPRISy3xgAZ0HHVg"/>
+  
+<link rel="modulepreload" href="/wasm_parser/wasm_parser-ea92cb237453f85c.js" crossorigin=anonymous integrity="sha384-Srdzg0fhW8toHXkAjlAJUl1zW15pqCdXK+UNJeGxoBC23UKLR2OOptc2gNg8xrCo">
+<link rel="preload" href="/wasm_parser/wasm_parser-ea92cb237453f85c_bg.wasm" crossorigin=anonymous integrity="sha384-7zDo394mrlmr3Dh9a2sp+eBBm13cjPyaxbE8IFykD52uo3P9IDFP2WpevfQYi+ft" as="fetch" type="application/wasm"></head>
+  <body class="bg-neutral-100 dark:bg-neutral-800"></body>
+</html>
